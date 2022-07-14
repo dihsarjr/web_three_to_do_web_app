@@ -3,7 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:web_3_t0_do_web_app/web_three/home/provider/home_provider.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  final String address;
+  const Home({Key? key, required this.address}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -27,11 +28,21 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         backgroundColor: Colors.white,
       ),
-      body: Consumer<HomeProvider>(builder: (context, snapshot, _) {
-        return Center(
-          child: Text(snapshot.address),
-        );
-      }),
+      body: Consumer<HomeProvider>(
+        builder: (context, snapshot, _) {
+          return Center(
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: () {
+                  snapshot.vote(context: context, address: widget.address);
+                },
+                child: Text(snapshot.address),
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }

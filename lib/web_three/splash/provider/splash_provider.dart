@@ -15,7 +15,7 @@ class SplashProvider with ChangeNotifier {
       try {
         _accessKeys = await ethereum!.requestAccount();
         log(_accessKeys.toString());
-        navigateToHome(context: context);
+        navigateToHome(context: context, address: _accessKeys[0]);
       } on EthereumUserRejected {
         log('User rejected the modal');
       } catch (e) {
@@ -26,11 +26,14 @@ class SplashProvider with ChangeNotifier {
   }
 
   /// [navigateToHome] this function helps to navigate user to home
-  void navigateToHome({required BuildContext context}) {
+  void navigateToHome(
+      {required BuildContext context, required String address}) {
     Navigator.pushReplacement(
       context,
       CupertinoPageRoute(
-        builder: (ctx) => const Home(),
+        builder: (ctx) => Home(
+          address: address,
+        ),
       ),
     );
   }
