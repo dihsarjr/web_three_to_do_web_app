@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:web_3_t0_do_web_app/web_three/home/home.dart';
 import 'package:web_3_t0_do_web_app/web_three/home/provider/home_provider.dart';
 import 'package:web_3_t0_do_web_app/web_three/splash/provider/splash_provider.dart';
-import 'package:web_3_t0_do_web_app/web_three/splash/splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +26,10 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const Splash(),
+        // home: const Splash(),
+        home: Home(
+          address: '',
+        ),
       ),
     );
   }
