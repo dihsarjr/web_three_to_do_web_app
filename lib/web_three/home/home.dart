@@ -156,9 +156,13 @@ class _HomeState extends State<Home> {
                         });
                       },
                       child: snapshot.addTodoLoadingState
-                          ? const Center(
-                              child: CupertinoActivityIndicator(
-                                  color: Colors.white),
+                          ? const SizedBox(
+                              height: 50,
+                              child: Center(
+                                child: CupertinoActivityIndicator(
+                                  color: Colors.white,
+                                ),
+                              ),
                             )
                           : const SizedBox(
                               height: 50,
